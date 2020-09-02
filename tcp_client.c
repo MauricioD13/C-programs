@@ -9,8 +9,9 @@
 // #include <netinet/in.h> -> Manipulacion de headers, tiene la informacion de los headers para la ip y el puerto del otro socket
 
 int main(){
+
     //Create a socket
-    int network_socket;
+    SOCKET network_socket;
     network_socket=socket(AF_INET,SOCK_STREAM,0);//AF_NET specify ipv4 and SOCK_STREAM specify TCP protocol
     
     //Specify an address for the socket and connect to another socket 
@@ -41,7 +42,7 @@ int main(){
     //Cerrar el socket
 
     closesocket(network_socket);
-
+    // Para compilar en windows es necesario el modificador -lws2_32
     return 0;
 
 }

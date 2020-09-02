@@ -13,7 +13,6 @@
 
 
 int main(){
-
     const char *server_response="Hello";
     
     //Crear socket del servidor
