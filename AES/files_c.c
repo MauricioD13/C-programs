@@ -2,51 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
-void print_matrix(int** matrix){
-    for(int i = 0; i<16; i++){
-        for(int j = 0; j<16; j++){
-            printf("%x , ",*(*(matrix+i)+j));
-        }
-        printf("\n");
-    }
-}
 int main(){
 
-    FILE *file;
-    char *table=malloc(100*sizeof(char));
-    file=fopen("s-box.txt","r");
-    if(file==NULL){
-        printf("Error opening the file");
+    FILE *archivo;
+    char *tabla=malloc(100*sizeof(char));
+    char *caracter;
+    archivo=fopen("s-box.txt","r");
+    if(archivo==NULL){
         return 1;
     }
-    int **matrix = malloc(16*sizeof(int*));
-    int j = 0;
-    while(fgets(table,100,file)){
-        
-        int number;
-        char *hex;
-        int *row = malloc(16*sizeof(int));
-        hex = strtok(table,","); 
-        number = (int)strtol(hex,NULL,16);
-        *row = number;
-    
-        for(int i=1;i<16;i++){
-            hex = strtok(NULL,",");
-            number = (int)strtol(hex,NULL,16); //Convertir de 
-            *(row + i) = number;
-
-        }
-        *(matrix+j) = row;
-        j++;
-        
-        for(int i = 0; i < 16 ; i++){
-            printf("%x,",*(row+i));
-        }
-        printf("\n");
+    else{
+        printf("\n El contenido del archivo de prueba es \n\n");
+        fgets(tabla,100,archivo);
+        printf("%s \n",tabla);
     }
-    print_matrix(matrix);
-    fclose(file);
+    int number;
+    char *q;
+    char *y;
+    q=strtok(tabla,",");
+    printf("1. %s\n",q);
+    for(int i=2;i<17;i++){
+        q=strtok(NULL,",");
+        printf("%d. %d\n",i,atol(q));
+
+    }
+    printf("char : %d \n",sizeof(char));
+    fclose(archivo);
     return 0;
 }
