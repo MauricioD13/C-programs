@@ -7,7 +7,7 @@
 void print_matrix(int** matrix){
     for(int i = 0; i<16; i++){
         for(int j = 0; j<16; j++){
-            printf("%x\t",*((*matrix+j)+i));
+            printf("%x , ",*(*(matrix+i)+j));
         }
         printf("\n");
     }
@@ -31,19 +31,22 @@ int main(){
         hex = strtok(table,","); 
         number = (int)strtol(hex,NULL,16);
         *row = number;
-        
+    
         for(int i=1;i<16;i++){
             hex = strtok(NULL,",");
             number = (int)strtol(hex,NULL,16); //Convertir de 
-            printf("%x,",number);
             *(row + i) = number;
 
         }
         *(matrix+j) = row;
         j++;
+        
+        for(int i = 0; i < 16 ; i++){
+            printf("%x,",*(row+i));
+        }
         printf("\n");
     }
-    //print_matrix(matrix);
+    print_matrix(matrix);
     fclose(file);
     return 0;
 }
